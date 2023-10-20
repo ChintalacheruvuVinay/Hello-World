@@ -1,0 +1,25 @@
+name: Python Deploy
+
+on:
+  push:
+    branches:
+      - main  # Change this to your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Set the Python version you need
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt  # If you have any dependencies, create a requirements.txt file.
+
+    - name: Run Python App
+      run: python app.py
